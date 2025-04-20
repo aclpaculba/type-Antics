@@ -1,0 +1,90 @@
+/* Netflix-Themed MonkeyType Style */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #bababa;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    text-align: center;
+  }
+  
+  .container {
+    width: 90%;
+    max-width: 800px;
+  }
+  
+  /* Title */
+  h1 {
+    font-size: 32px;
+    color: #8cb48e; /* Netflix Red */
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+  }
+  
+  /* Typing Text Styling - No Box */
+  .text-container {
+    font-size: 36px; /* Larger Font */
+    font-family: 'Courier New', monospace;
+    text-align: center;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    line-height: 1.8;
+    margin: 20px 0;
+  }
+  
+  /* Text Effects */
+  .text-container span {
+    opacity: 0.4;
+    transition: opacity 0.2s ease;
+  }
+  
+  .text-container span.correct {
+    color: white;
+    opacity: 1;
+  }
+  
+  .text-container span.incorrect {
+    color: #ec3737; /* Netflix Red */
+    opacity: 1;
+  }
+  
+  /* Hidden Input Field */
+  #typing-input {
+    position: absolute;
+    opacity: 0;
+  }
+  
+  /* Stats */
+  .stats {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 20px 0;
+    font-size: 20px;
+    font-weight: bold;
+    opacity: 0.8;
+  }
+  
+  /* Restart Button */
+  button {
+    padding: 14px 28px;
+    font-size: 18px;
+    background-color: #8cb48e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: 20px;
+    transition: 0.3s;
+  }
+  
+  button:hover {
+    background-color: #8cb48e;;
+  }
+  

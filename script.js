@@ -22,18 +22,16 @@ const wordBank = [
   "loop", "array", "object", "programming", "framework", "library", "responsive", "design"
 ];
 
-// Function to generate a random text string
 function generateRandomText() {
   let words = [];
   for (let i = 0; i < 10; i++) {
     words.push(wordBank[Math.floor(Math.random() * wordBank.length)]);
   }
-  textString = words.join(" "); // Full sentence as a string
-  textArray = textString.split(""); // Convert words to character array
+  textString = words.join(" ");
+  textArray = textString.split("");
   textContainer.innerHTML = textArray.map(char => `<span>${char}</span>`).join("");
 }
 
-// Start the timer
 function startTimer() {
   if (isTyping) return;
 
@@ -50,7 +48,6 @@ function startTimer() {
   }, 1000);
 }
 
-// Check user input and detect game completion
 typingInput.addEventListener("input", () => {
   startTimer();
 
@@ -76,25 +73,21 @@ typingInput.addEventListener("input", () => {
       span.classList.remove("correct");
       span.style.opacity = 1;
     }
+
+    // 💡 Scroll current character into view
+    if (index === userInput.length - 1 && span) {
+      span.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
+    }
   });
 
   correctChars = correctCount;
-  wordCount = Math.floor(correctCount / 5); // Approx. words = chars / 5
+  wordCount = Math.floor(correctCount / 5);
 
-  // Update stats
   const accuracy = (correctCount / totalChars) * 100 || 100;
   accuracyDisplay.textContent = accuracy.toFixed(2);
   wpmDisplay.textContent = Math.round(wordCount * (60 / (60 - timer)));
-
-  // **End game if the full text is typed**
-  if (userInput.length === textString.length) {
-    clearInterval(interval);
-    typingInput.disabled = true;
-    showFinalStats();
-  }
 });
 
-// Restart game and generate new text
 restartBtn.addEventListener("click", () => {
   clearInterval(interval);
   isTyping = false;
@@ -113,15 +106,22 @@ restartBtn.addEventListener("click", () => {
   generateRandomText();
 });
 
-// Show final stats
 function showFinalStats() {
   alert(`Test completed! WPM: ${wpmDisplay.textContent}, Accuracy: ${accuracyDisplay.textContent}%`);
 }
 
-// Generate random text on page load
 generateRandomText();
 
 // Focus on the hidden input when clicking anywhere
 document.addEventListener("click", () => {
   typingInput.focus();
 });
+
+function showFinalStats() {
+  const wpm = wpmDisplay.textContent;
+  const accuracy = accuracyDisplay.textContent;
+
+  // Redirect to results page with stats as URL parameters
+  window.location.href = `results.html?wpm=${wpm}&accuracy=${accuracy}`;
+}
+

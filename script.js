@@ -117,11 +117,5 @@ document.addEventListener("click", () => {
   typingInput.focus();
 });
 
-function showFinalStats() {
-  const wpm = wpmDisplay.textContent;
-  const accuracy = accuracyDisplay.textContent;
 
-  // Redirect to results page with stats as URL parameters
-  window.location.href = `results.html?wpm=${wpm}&accuracy=${accuracy}`;
-}
 

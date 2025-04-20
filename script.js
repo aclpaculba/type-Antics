@@ -16,22 +16,33 @@ let textString = "";
 
 // Word bank for random text generation
 const wordBank = [
-  "computer", "science", "keyboard", "coding", "algorithm", "developer", "function", "variable",
-  "script", "debug", "frontend", "backend", "software", "hardware", "internet", "network",
-  "browser", "syntax", "compile", "execute", "data", "structure", "performance", "optimize",
-  "loop", "array", "object", "programming", "framework", "library", "responsive", "design"
+ "apple", "banana", "table", "chair", "window", "school", "pencil", "bottle",
+"coffee", "shirt", "music", "friend", "phone", "book", "paper", "carpet",
+"cloud", "river", "mountain", "beach", "sunset", "garden", "kitchen", "mirror",
+"flower", "forest", "animal", "teacher", "student", "family", "holiday", "dream",
+"sleep", "morning", "evening", "lunch", "dinner", "breakfast", "rain", "snow",
+"hat", "shoes", "pants", "glasses", "toothbrush", "soap", "water", "juice",
+"milk", "cookie", "bread", "egg", "butter", "cheese", "basket", "candle",
+"gift", "party", "picture", "painting", "clock", "door", "lamp", "blanket",
+"pillow", "notebook", "bag", "purse", "wallet", "key", "train", "bus",
+"street", "road", "house", "apartment", "store", "market", "park", "tree",
+"bike", "ball", "game", "movie", "song", "voice", "face", "hand",
+"finger", "toe", "leg", "arm", "smile", "laugh", "hug", "kiss"
+
 ];
 
+// Function to generate a random text string
 function generateRandomText() {
   let words = [];
   for (let i = 0; i < 10; i++) {
     words.push(wordBank[Math.floor(Math.random() * wordBank.length)]);
   }
-  textString = words.join(" ");
-  textArray = textString.split("");
+  textString = words.join(" "); // Full sentence as a string
+  textArray = textString.split(""); // Convert words to character array
   textContainer.innerHTML = textArray.map(char => `<span>${char}</span>`).join("");
 }
 
+// Start the timer
 function startTimer() {
   if (isTyping) return;
 
@@ -48,6 +59,7 @@ function startTimer() {
   }, 1000);
 }
 
+// Check user input and detect game completion
 typingInput.addEventListener("input", () => {
   startTimer();
 
@@ -73,21 +85,25 @@ typingInput.addEventListener("input", () => {
       span.classList.remove("correct");
       span.style.opacity = 1;
     }
-
-    // 💡 Scroll current character into view
-    if (index === userInput.length - 1 && span) {
-      span.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
-    }
   });
 
   correctChars = correctCount;
-  wordCount = Math.floor(correctCount / 5);
+  wordCount = Math.floor(correctCount / 5); // Approx. words = chars / 5
 
+  // Update stats
   const accuracy = (correctCount / totalChars) * 100 || 100;
   accuracyDisplay.textContent = accuracy.toFixed(2);
   wpmDisplay.textContent = Math.round(wordCount * (60 / (60 - timer)));
+
+  // **End game if the full text is typed**
+  if (userInput.length === textString.length) {
+    clearInterval(interval);
+    typingInput.disabled = true;
+    showFinalStats();
+  }
 });
 
+// Restart game and generate new text
 restartBtn.addEventListener("click", () => {
   clearInterval(interval);
   isTyping = false;
@@ -106,16 +122,15 @@ restartBtn.addEventListener("click", () => {
   generateRandomText();
 });
 
+// Show final stats
 function showFinalStats() {
   alert(`Test completed! WPM: ${wpmDisplay.textContent}, Accuracy: ${accuracyDisplay.textContent}%`);
 }
 
+// Generate random text on page load
 generateRandomText();
 
 // Focus on the hidden input when clicking anywhere
 document.addEventListener("click", () => {
   typingInput.focus();
 });
-
-
-

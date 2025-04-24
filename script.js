@@ -29,8 +29,6 @@ function generateRandomText() {
 }
 
 function startTimer() {
-  if (isTyping) return;
-
   isTyping = true;
   interval = setInterval(() => {
     timer--;
@@ -39,13 +37,13 @@ function startTimer() {
     if (timer === 0) {
       clearInterval(interval);
       typingInput.disabled = true;
-      showFinalStats();
+      showFinalStats(); // backup — just in case user never finishes typing
     }
   }, 1000);
 }
 
 typingInput.addEventListener("input", () => {
-  startTimer();
+  if (!isTyping) startTimer();
 
   const userInput = typingInput.value;
   totalChars = userInput.length;
@@ -82,6 +80,7 @@ typingInput.addEventListener("input", () => {
   accuracyDisplay.textContent = accuracy.toFixed(2);
   wpmDisplay.textContent = Math.round(wordCount * (60 / (60 - timer)));
 
+  // Immediately end game if the full text is typed
   if (userInput.length === textString.length) {
     clearInterval(interval);
     typingInput.disabled = true;

@@ -14,7 +14,9 @@ let totalChars = 0;
 let textArray = [];
 let textString = "";
 
-const wordBank = ["apple", "banana", "coding", "script", "orange", "planet", "object", "random", "sample", "system"];
+const wordBank = [
+  "banana", "object", "laptop", "sample", "design", "planet", "orange", "number", "hidden", "simple"
+];
 
 function generateRandomText() {
   let words = [];
@@ -79,6 +81,12 @@ typingInput.addEventListener("input", () => {
   const accuracy = (correctCount / totalChars) * 100 || 100;
   accuracyDisplay.textContent = accuracy.toFixed(2);
   wpmDisplay.textContent = Math.round(wordCount * (60 / (60 - timer)));
+
+  if (userInput.length === textString.length) {
+    clearInterval(interval);
+    typingInput.disabled = true;
+    showFinalStats();
+  }
 });
 
 restartBtn.addEventListener("click", () => {
@@ -114,7 +122,6 @@ function showFinalStats() {
   const accuracy = accuracyDisplay.textContent;
 
   savePerformance(wpm, accuracy);
-
   window.location.href = `results.html?wpm=${wpm}&accuracy=${accuracy}`;
 }
 

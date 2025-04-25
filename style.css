@@ -108,3 +108,13 @@ button:hover {
     width: 100%;
   }
 }
+#caret {
+  width: 2px;
+  height: 32px;
+  background-color: red;
+  position: absolute;
+  pointer-events: none;
+  transition: all 0.05s ease;
+  z-index: 100;
+}
+

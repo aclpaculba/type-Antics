@@ -80,6 +80,10 @@ typingInput.addEventListener("input", () => {
   accuracyDisplay.textContent = accuracy.toFixed(2);
   wpmDisplay.textContent = Math.round(wordCount * (60 / (60 - timer)));
 
+  const currentSpan = textContainer.children[userInput.length] || textContainer.lastElementChild;
+moveCaretToSpan(currentSpan);
+
+
   // Immediately end game if the full text is typed
   if (userInput.length === textString.length) {
     clearInterval(interval);
@@ -128,4 +132,16 @@ generateRandomText();
 
 document.addEventListener("click", () => {
   typingInput.focus();
+
 });
+
+function moveCaretToSpan(span) {
+  const caret = document.getElementById("caret");
+  if (!span) return;
+  const rect = span.getBoundingClientRect();
+  const containerRect = textContainer.getBoundingClientRect();
+
+  caret.style.top = `${rect.top - containerRect.top + textContainer.scrollTop}px`;
+  caret.style.left = `${rect.left - containerRect.left + textContainer.scrollLeft}px`;
+}
+

@@ -15,7 +15,30 @@ let textArray = [];
 let textString = "";
 
 const wordBank = [
-  "banana", "object", "laptop", "sample", "design", "planet", "orange", "number", "hidden", "simple"
+ "banana", "object", "laptop", "sample", "design", "planet", "orange", "number", "hidden", "simple",
+"window", "circle", "pencil", "guitar", "forest", "bottle", "button", "silver", "market", "friend",
+"jungle", "castle", "puzzle", "rocket", "driver", "camera", "animal", "school", "people", "little",
+"travel", "winter", "summer", "flower", "bridge", "monkey", "danger", "career", "flight", "silent",
+"ticket", "author", "letter", "health", "wealth", "chance", "planet", "leader", "bright", "hunter",
+"wonder", "tunnel", "castle", "energy", "butter", "cotton", "master", "jumper", "ranger", "thread",
+"basket", "signal", "border", "future", "update", "manual", "doctor", "editor", "reason", "pocket",
+"garage", "effect", "moment", "singer", "painter", "jacket", "hammer", "scared", "ground", "eagle",
+"rabbit", "wallet", "gather", "battle", "author", "module", "review", "sector", "client", "action",
+"beacon", "buffer", "charge", "wander", "thrive", "manage", "police", "vision", "breath", "honest",
+"ribbon", "safety", "folder", "invite", "cheese", "market", "planet", "unique", "silent", "marble",
+"attack", "branch", "divide", "marine", "loyalty", "silent", "stride", "fabric", "reward", "prayer",
+"reward", "saddle", "modern", "fabric", "smooth", "refuse", "forest", "spirit", "impact", "hidden",
+"native", "castle", "pretty", "option", "global", "frozen", "submit", "donate", "coast", "hunger",
+"belief", "select", "income", "vision", "change", "system", "matter", "bounce", "corner", "double",
+"evolve", "expand", "follow", "glance", "import", "invest", "jungle", "layout", "luxury", "medium",
+"moment", "object", "packet", "pillow", "praise", "rescue", "retail", "scheme", "shelter", "slogan",
+"studio", "temple", "urgent", "valley", "weapon", "yellow", "zombie", "afford", "border", "cactus",
+"damage", "empire", "fabric", "galaxy", "honest", "island", "jumper", "kidnap", "legend", "manner",
+"native", "occupy", "paddle", "quartz", "random", "rocket", "sacred", "tackle", "unfold", "velvet",
+"whales", "yonder", "zenith", "absorb", "belief", "custom", "debate", "effort", "famous", "gentle",
+"height", "intent", "jungle", "knight", "lawyer", "manual", "notion", "oracle", "plenty", "quiver",
+"reason", "strain", "timely", "upward", "violet", "wonder", "yearly", "zenith", "landon"
+
 ];
 
 function generateRandomText() {

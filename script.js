@@ -38,12 +38,11 @@ const wordBank = [
 "whales", "yonder", "zenith", "absorb", "belief", "custom", "debate", "effort", "famous", "gentle",
 "height", "intent", "jungle", "knight", "lawyer", "manual", "notion", "oracle", "plenty", "quiver",
 "reason", "strain", "timely", "upward", "violet", "wonder", "yearly", "zenith", "landon"
-
 ];
 
 function generateRandomText() {
   let words = [];
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 200; i++) {
     words.push(wordBank[Math.floor(Math.random() * wordBank.length)]);
   }
   textString = words.join(" ");
